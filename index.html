@@ -4,64 +4,64 @@
   <meta charset="UTF-8">
   <title>Tuổi Dậy Thì - Chat Ẩn Danh</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: Arial, sans-serif;
-    background: #f3f4f6;
-    margin: 0;
-    padding: 0;
-  }
-  header {
-    background-color: #1f2937;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-  }
-  #chatbox {
-    height: 60vh;
-    overflow-y: auto;
-    background: white;
-    padding: 1rem;
-    border-bottom: 1px solid #ddd;
-  }
-  .message {
-    margin-bottom: 0.75rem;
-    border-left: 4px solid #60a5fa;
-    padding-left: 0.5rem;
-    word-wrap: break-word;
-  }
-  .name {
-    font-weight: bold;
-    color: #2563eb;
-  }
-  .content {
-    margin-top: 0.25rem;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem;
-    background: #e5e7eb;
-  }
-  input, button {
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
-  input[type="text"] {
-    width: 100%;
-  }
-  button {
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 4px;
-  }
-</style>
- <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.min.js"></script> 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1f2937;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    #chatbox {
+      height: 60vh;
+      overflow-y: auto;
+      background: white;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .message {
+      margin-bottom: 0.75rem;
+      border-left: 4px solid #60a5fa;
+      padding-left: 0.5rem;
+      word-wrap: break-word;
+    }
+    .name {
+      font-weight: bold;
+      color: #2563eb;
+    }
+    .content {
+      margin-top: 0.25rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: #e5e7eb;
+    }
+    input, button {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    input[type="text"] {
+      width: 100%;
+    }
+    button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.min.js"></script>
 </head>
 <body>
   <header>
@@ -74,45 +74,48 @@
   <form id="chat-form">
     <input type="text" id="username" placeholder="Tên ẩn danh..." required>
     <div style="display: flex; gap: 0.5rem;">
-  <input type="text" id="message" placeholder="Nhập tin nhắn..." required style="flex: 1;">
-  <button type="button" id="emoji-btn">😊</button>
-</div>
+      <input type="text" id="message" placeholder="Nhập tin nhắn..." required style="flex: 1;">
+      <button type="button" id="emoji-btn">😊</button>
+    </div>
     <button type="submit">Gửi</button>
   </form>
-<script>
-  const form = document.getElementById('chat-form');
-  const chatbox = document.getElementById('chatbox');
-  const emojiBtn = document.getElementById('emoji-btn');
-  const messageInput = document.getElementById('message');
 
-  const picker = new EmojiButton();
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('chat-form');
+      const chatbox = document.getElementById('chatbox');
+      const emojiBtn = document.getElementById('emoji-btn');
+      const messageInput = document.getElementById('message');
 
-  emojiBtn.addEventListener('click', () => {
-    picker.togglePicker(emojiBtn);
-  });
+      const picker = new EmojiButton();
 
-  picker.on('emoji', emoji => {
-    messageInput.value += emoji;
-    messageInput.focus();
-  });
+      emojiBtn.addEventListener('click', () => {
+        picker.togglePicker(emojiBtn);
+      });
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const username = document.getElementById('username').value.trim();
-    const message = messageInput.value.trim();
-    if (!username || !message) return;
+      picker.on('emoji', emoji => {
+        messageInput.value += emoji;
+        messageInput.focus();
+      });
 
-    const div = document.createElement('div');
-    div.classList.add('message');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const message = messageInput.value.trim();
+        if (!username || !message) return;
 
-    const timestamp = new Date().toLocaleTimeString();
-    div.innerHTML = '<div class="name">[' + timestamp + '] ' + username + '</div>' +
-                    '<div class="content">' + message + '</div>';
+        const div = document.createElement('div');
+        div.classList.add('message');
 
-    chatbox.appendChild(div);
-    chatbox.scrollTop = chatbox.scrollHeight;
-    messageInput.value = '';
-  });
-</script>
+        const timestamp = new Date().toLocaleTimeString();
+        div.innerHTML = '<div class="name">[' + timestamp + '] ' + username + '</div>' +
+                        '<div class="content">' + message + '</div>';
+
+        chatbox.appendChild(div);
+        chatbox.scrollTop = chatbox.scrollHeight;
+        messageInput.value = '';
+      });
+    });
+  </script>
 </body>
 </html>

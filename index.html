@@ -2,10 +2,89 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Tuổi Dậy Thì</title>
+  <title>Tuổi Dậy Thì - Chat Ẩn Danh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1f2937;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    #chatbox {
+      height: 400px;
+      overflow-y: scroll;
+      background: white;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .message {
+      margin-bottom: 0.75rem;
+      border-left: 4px solid #60a5fa;
+      padding-left: 0.5rem;
+    }
+    .name {
+      font-weight: bold;
+      color: #2563eb;
+    }
+    .content {
+      margin-top: 0.25rem;
+    }
+    form {
+      display: flex;
+      padding: 1rem;
+      background: #e5e7eb;
+    }
+    input, button {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    input[type="text"] {
+      flex: 1;
+      margin-right: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>👋 Chào mừng đến với Tuổi Dậy Thì!</h1>
-  <p>Web chat ẩn danh - nơi hoài niệm thời niên thiếu.</p>
+  <header>
+    <h1>👋 Tuổi Dậy Thì</h1>
+    <p>Web chat ẩn danh - nơi hoài niệm thời niên thiếu</p>
+  </header>
+
+  <div id="chatbox"></div>
+
+  <form id="chat-form">
+    <input type="text" id="username" placeholder="Tên ẩn danh..." required>
+    <input type="text" id="message" placeholder="Nhập tin nhắn..." required>
+    <button type="submit">Gửi</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('chat-form');
+    const chatbox = document.getElementById('chatbox');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!username || !message) return;
+
+      const div = document.createElement('div');
+      div.classList.add('message');
+      div.innerHTML = '<div class="name">' + username + '</div>' +
+                      '<div class="content">' + message + '</div>';
+
+      chatbox.appendChild(div);
+      chatbox.scrollTop = chatbox.scrollHeight;
+
+      document.getElementById('message').value = '';
+    });
+  </script>
 </body>
 </html>

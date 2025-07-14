@@ -79,12 +79,13 @@
 </div>
     <button type="submit">Gửi</button>
   </form>
-  <script>
+<script>
   const form = document.getElementById('chat-form');
   const chatbox = document.getElementById('chatbox');
-  const picker = new EmojiButton();
   const emojiBtn = document.getElementById('emoji-btn');
   const messageInput = document.getElementById('message');
+
+  const picker = new EmojiButton();
 
   emojiBtn.addEventListener('click', () => {
     picker.togglePicker(emojiBtn);
@@ -110,7 +111,6 @@
 
     chatbox.appendChild(div);
     chatbox.scrollTop = chatbox.scrollHeight;
-
     messageInput.value = '';
   });
 </script>

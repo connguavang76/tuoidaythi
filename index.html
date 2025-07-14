@@ -4,52 +4,63 @@
   <meta charset="UTF-8">
   <title>Tuổi Dậy Thì - Chat Ẩn Danh</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f3f4f6;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #1f2937;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    #chatbox {
-      height: 400px;
-      overflow-y: scroll;
-      background: white;
-      padding: 1rem;
-      border-bottom: 1px solid #ddd;
-    }
-    .message {
-      margin-bottom: 0.75rem;
-      border-left: 4px solid #60a5fa;
-      padding-left: 0.5rem;
-    }
-    .name {
-      font-weight: bold;
-      color: #2563eb;
-    }
-    .content {
-      margin-top: 0.25rem;
-    }
-    form {
-      display: flex;
-      padding: 1rem;
-      background: #e5e7eb;
-    }
-    input, button {
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    input[type="text"] {
-      flex: 1;
-      margin-right: 0.5rem;
-    }
-  </style>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #1f2937;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  #chatbox {
+    height: 60vh;
+    overflow-y: auto;
+    background: white;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  .message {
+    margin-bottom: 0.75rem;
+    border-left: 4px solid #60a5fa;
+    padding-left: 0.5rem;
+    word-wrap: break-word;
+  }
+  .name {
+    font-weight: bold;
+    color: #2563eb;
+  }
+  .content {
+    margin-top: 0.25rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: #e5e7eb;
+  }
+  input, button {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  input[type="text"] {
+    width: 100%;
+  }
+  button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+</style>
 </head>
 <body>
   <header>
